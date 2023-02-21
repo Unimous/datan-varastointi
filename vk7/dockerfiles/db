@@ -1,0 +1,7 @@
+FROM library/mysql:8
+ENV MYSQL_ROOT_PASSWORD=secret
+ENV MYSQL_DATABASE=company
+ENV MYSQL_USER=company
+ENV MYSQL_PASSWORD=company
+ENV LANG=C.UTF-8
+COPY ./dockerfiles/init-db.sql /docker-entrypoint-initdb.d/

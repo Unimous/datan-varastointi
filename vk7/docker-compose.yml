@@ -1,0 +1,30 @@
+version: '2.4'
+
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: dockerfiles/api
+    ports:
+      - '5000:5000'
+    environment:
+      - FLASK_DEBUG=1
+    volumes:
+      - './api:/api'
+    restart: always
+  
+  db:
+    build:
+      context: ./
+      dockerfile: dockerfiles/db
+    ports:
+      - '3306:3306'
+    volumes:
+      - /var/lib/mysql
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8080:8080'
